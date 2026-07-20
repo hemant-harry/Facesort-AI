@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+
+# VS Code
+.vscode/
+
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+
+# Runtime data
+uploads/
+reference/
+output/
+matched_images.zip
+
+# Logs
+*.log
+
+# Testing
+test_ai.py

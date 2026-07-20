@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceSort AI</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚀 FaceSort AI</h1>
+
+    <p>Upload a folder and one reference image.</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <div class="card">
+
+            <h3>📁 Upload Image Folder</h3>
+
+            <input
+                type="file"
+                name="folder"
+                webkitdirectory
+                directory
+                multiple
+                required>
+
+        </div>
+
+        <div class="card">
+
+            <h3>🖼 Upload Reference Image</h3>
+
+            <input
+                type="file"
+                name="reference"
+                accept="image/*"
+                required>
+
+        </div>
+
+        <button type="submit">
+    Find Matching Photos
+</button>
+
+<div id="loading" style="display:none;">
+    <h3>🔍 Scanning Images...</h3>
+</div>
+
+<div id="results"></div>
+<div style="margin-top:20px;text-align:center;">
+
+   
+</div>
+
+    </form>
+
+</div>
+
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>
