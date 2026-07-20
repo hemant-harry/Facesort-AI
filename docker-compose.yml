@@ -1,0 +1,7 @@
+services:
+  facesort-ai:
+    build: .
+    container_name: face-container
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
