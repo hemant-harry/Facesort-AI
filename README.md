@@ -1,152 +1,261 @@
-# 🚀 FaceSort AI
+# 🚀 FaceSort AI - Dockerized FastAPI Application on AWS EC2
 
-A production-style AI web application built with **FastAPI** and **Docker**, deployed on **AWS EC2** using **Docker Compose**.
+A production-style DevOps project demonstrating how to containerize and deploy a FastAPI-based AI application using Docker and Docker Compose on AWS EC2.
 
-This project was created to learn real-world DevOps practices including containerization, cloud deployment, debugging, and production troubleshooting.
+This project focuses on real-world deployment practices, Linux troubleshooting, Docker containerization, cloud deployment, and production debugging.
 
 ---
 
-## 📌 Features
+# 📌 Project Overview
 
-- AI-based Face Recognition Application
+FaceSort AI is an AI-powered face recognition application built with FastAPI. The application has been containerized using Docker and deployed on an AWS EC2 instance using Docker Compose.
+
+The deployment includes production-level troubleshooting such as:
+
+- Docker containerization
+- Docker Compose deployment
+- AWS EC2 deployment
+- Linux swap memory configuration
+- Out Of Memory (OOM) troubleshooting
+- Docker networking
+- Production debugging
+
+---
+
+# ✨ Features
+
+- AI Face Recognition
 - FastAPI Backend
 - Dockerized Application
 - Docker Compose Support
 - AWS EC2 Deployment
-- Production-ready Container Setup
+- Production-ready Dockerfile
+- Linux Swap Memory Configuration
+- Port Mapping
+- Easy Deployment
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠 Tech Stack
 
 - Python 3.12
 - FastAPI
+- Uvicorn
 - Docker
 - Docker Compose
 - AWS EC2
-- Uvicorn
-- Git & GitHub
+- Amazon Linux 2023
+- InsightFace
+- ONNX Runtime
+- OpenCV
+- Git
+- GitHub
 
 ---
 
-## 📂 Project Structure
+# 🏗️ Architecture Diagram
 
+```text
+                     👤 User
+                        │
+                        ▼
+                🌍 Web Browser
+          http://AWS_PUBLIC_IP:8000
+                        │
+                        ▼
+              ☁️ AWS EC2 Instance
+                Amazon Linux 2023
+                        │
+                Docker Compose
+                        │
+        ┌─────────────────────────┐
+        │     FaceSort AI         │
+        │-------------------------│
+        │ FastAPI                 │
+        │ Uvicorn                 │
+        │ InsightFace             │
+        │ ONNX Runtime            │
+        │ OpenCV                  │
+        └─────────────────────────┘
+                        │
+                        ▼
+             AI Face Recognition
 ```
-Facesort-AI/
+
+---
+
+# 📁 Project Structure
+
+```text
+FaceSort-AI/
 │
 ├── app/
+├── static/
+├── templates/
+├── screenshots/
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-├── .dockerignore
-├── .gitignore
-└── README.md
+├── README.md
+└── .dockerignore
 ```
 
 ---
 
-## 🚀 Run Locally
+# 🐳 Docker Commands
 
-Clone the repository
-
-```bash
-git clone <repository-url>
-```
-
-Move into project
-
-```bash
-cd Facesort-AI
-```
-
-Build Docker Image
+### Build Image
 
 ```bash
 docker build -t facesort-ai .
 ```
 
-Run Container
+### Run Container
 
 ```bash
 docker run -d -p 8000:8000 facesort-ai
 ```
 
+### View Running Containers
+
+```bash
+docker ps
+```
+
+### View Images
+
+```bash
+docker images
+```
+
 ---
 
-## 🐳 Run using Docker Compose
+# 🐳 Docker Compose
+
+Run the complete application
 
 ```bash
 docker compose up -d --build
 ```
 
-Stop Application
+Stop containers
 
 ```bash
 docker compose down
 ```
 
+View running services
+
+```bash
+docker compose ps
+```
+
 ---
 
-## ☁️ AWS Deployment
+# ☁️ AWS Deployment
 
-This application has been successfully deployed on AWS EC2 using Docker Compose.
+The application was deployed on an AWS EC2 Amazon Linux 2023 instance.
 
-Deployment steps included:
+Deployment Steps:
 
 - Launch EC2 Instance
-- Install Docker & Docker Compose
-- Clone Repository
+- Install Docker
+- Install Docker Compose
+- Clone GitHub Repository
 - Build Docker Image
-- Run Containers
-- Expose Application on Port 8000
+- Run Docker Compose
+- Expose Port 8000
+- Access Application via Public IP
+  
 
 ---
 
-## 🔧 Production Issues Solved
+# ⚡ Production Challenges Solved
 
-During deployment, several real-world production issues were diagnosed and resolved:
+During deployment several real-world production issues were encountered and resolved.
 
-- Fixed missing OpenCV runtime libraries
-- Resolved Docker container restart loop
-- Diagnosed Exit Code 137
-- Identified Linux OOM Killer
-- Created Swap Memory on EC2
-- Fixed Disk Space Issues
-- Cleaned Docker Build Cache & Volumes
+### Docker Container Restart Issue
 
----
+The container repeatedly restarted because the application exhausted available memory.
 
-## 📸 Screenshots
+Solution:
 
-### Application
-
-(Add Screenshot Here)
-
-### Docker Containers
-
-(Add Screenshot Here)
-
-### AWS EC2
-
-(Add Screenshot Here)
+- Configured Linux Swap Memory
+- Optimized Docker deployment
 
 ---
 
-## 📚 What I Learned
+### Out Of Memory (OOM)
 
-- Docker
+The EC2 instance had only 1 GB RAM which caused the Linux OOM Killer to terminate the application.
+
+Solution:
+
+- Created a 2 GB Swap File
+- Enabled Swap Memory
+- Verified memory usage using Linux tools
+
+---
+
+### Disk Space Issue
+
+Docker images consumed most of the available storage.
+
+Solution:
+
+- Removed unused Docker images
+- Cleared build cache
+- Deleted unused Docker volumes
+
+---
+
+### Docker Networking
+
+Configured proper port mapping between host and container.
+
+```
+Host Port 8000
+      │
+      ▼
+Container Port 8000
+```
+
+---
+
+# 📚 What I Learned
+
+- Docker Image Creation
+- Dockerfile Best Practices
 - Docker Compose
+- Linux Memory Management
+- Swap Memory Configuration
 - AWS EC2 Deployment
-- Linux Troubleshooting
 - Docker Networking
-- Production Debugging
-- Memory Management
-- Container Optimization
+- Docker Debugging
+- Production Troubleshooting
+- Git & GitHub Workflow
 
 ---
 
-## 👨‍💻 Author
+# 🚀 Future Improvements
 
-Hemant Saini
+- Nginx Reverse Proxy
+- HTTPS using Let's Encrypt
+- CI/CD using GitHub Actions
+- Kubernetes Deployment
+- Monitoring with Prometheus & Grafana
+- Load Balancing
+
+---
+
+# 👨‍💻 Author
+
+**Hemant Saini**
 
 DevOps & Cloud Enthusiast
+
+GitHub: https://github.com/hemant-harry
+
+---
+
+⭐ If you found this project useful, don't forget to give it a star.
