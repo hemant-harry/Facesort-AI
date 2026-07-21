@@ -53,6 +53,45 @@ The deployment includes production-level troubleshooting such as:
 
 ---
 
+
+# 🎯 What Does FaceSort AI Do?
+
+FaceSort AI is an AI-powered face recognition web application that automatically sorts images based on a reference person's face.
+
+### Workflow
+
+1. Upload a **Reference Image** containing the face you want to identify.
+2. Upload a folder containing multiple photos.
+3. The AI analyzes every image using **InsightFace** and compares each detected face with the reference image.
+4. Matching photos are automatically grouped into a separate folder.
+5. Download the sorted images with a single click.
+
+This eliminates the need to manually search through hundreds or thousands of photos, making it useful for photographers, event organizers, media teams, and personal photo management.
+
+---
+
+## 🚀 How It Works
+
+```text
+Reference Image
+        │
+        ▼
+AI Extracts Face Embedding
+        │
+        ▼
+Upload Folder (100+ Images)
+        │
+        ▼
+AI Compares Every Face
+        │
+        ▼
+Matching Images
+        │
+        ▼
+Download Sorted Photos
+```
+
+
 # 🏗️ Architecture Diagram
 
 ```text
